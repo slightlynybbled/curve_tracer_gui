@@ -91,7 +91,7 @@ class CurveTracer(tk.Frame):
         self.shortcut_bar.add_btn(image_path='images/connections.png', command=self.select_port_window)
         self.shortcut_bar.add_btn(image_path='images/btn-pause.png', command=self.pause_plot)
         self.shortcut_bar.add_btn(image_path='images/btn-run.png', command=self.run_plot)
-        self.shortcut_bar.add_btn(image_path='images/cal.png', command=self.send_cal_command)
+        self.shortcut_bar.add_btn(image_path='images/cal.png', command=self.remove_offset)
         self.shortcut_bar.add_btn(image_path='images/select-output.png', command=self.select_output_mode)
         self.shortcut_bar.add_btn(image_path='images/gate-voltage.png', command=self.select_gate_voltage_window)
         self.shortcut_bar.add_btn(image_path='images/btn-waveform.png', command=self.setup_waveform_window)
@@ -484,8 +484,34 @@ class CurveTracer(tk.Frame):
 
         btn.grid(row=4, column=0, columnspan=3, padx=self.widget_padding, pady=self.widget_padding)
 
-    def send_cal_command(self):
-        self.ps.publish('cal', [['']], ['STRING'])
+    def remove_offset(self):
+        remove_offset_window = tk.Toplevel(padx=self.widget_padding, pady=self.widget_padding)
+        remove_offset_window.grab_set()
+        remove_offset_window.title('Remove Offset Window')
+        remove_offset_window.iconbitmap('images/forembed.ico')
+
+        msg1 = 'Please remove all devices from the curve tracer.  You should see a nearly horizontal line.'
+        msg2 = 'When you see this, then press "Remove Offset".'
+
+        msg1_msg = tk.Label(remove_offset_window, text=msg1)
+        msg2_msg = tk.Label(remove_offset_window, text=msg2)
+
+        msg1_msg.pack()
+        msg2_msg.pack()
+
+        def remove_offset():
+            self.ps.publish('cal', [['']], ['STRING'])
+            remove_offset_window.destroy()
+
+        def return_function(event):
+            remove_offset()
+
+        btn = tk.Button(remove_offset_window, text='Remove Offset', command=remove_offset)
+        btn.pack()
+
+        # bind the 'ENTER' key to the function
+        btn.focus()
+        btn.bind('<Return>', return_function)
 
     def select_output_mode(self):
         self.ps.publish('mode', [['']], ['STRING'])
