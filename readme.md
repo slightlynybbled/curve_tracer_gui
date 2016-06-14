@@ -1,3 +1,8 @@
+# Project Repositories #
+
+Be sure to check out the [firmware](https://github.com/slightlynybbled/curve_tracer_firmware) and 
+[hardware](https://github.com/slightlynybbled/curve_tracer_hardware) repositories!
+
 # Running This Program #
 
 This is *un-tested* on linux, but there is nothing too exotic going on, so I
