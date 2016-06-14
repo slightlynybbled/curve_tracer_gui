@@ -53,6 +53,7 @@ class CurveTracer(tk.Frame):
 
         self.edit_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.edit_menu.add_command(label='Select Serial Port...', command=self.select_port_window)
+        self.edit_menu.add_command(label='Remove Offset...', command=self.remove_offset)
         self.edit_menu.add_command(label='Edit Waveform...', command=self.setup_waveform_window)
 
         self.help_menu = tk.Menu(self.menu_bar, tearoff=0)
@@ -91,7 +92,6 @@ class CurveTracer(tk.Frame):
         self.shortcut_bar.add_btn(image_path='images/connections.png', command=self.select_port_window)
         self.shortcut_bar.add_btn(image_path='images/btn-pause.png', command=self.pause_plot)
         self.shortcut_bar.add_btn(image_path='images/btn-run.png', command=self.run_plot)
-        self.shortcut_bar.add_btn(image_path='images/cal.png', command=self.remove_offset)
         self.shortcut_bar.add_btn(image_path='images/select-output.png', command=self.select_output_mode)
         self.shortcut_bar.add_btn(image_path='images/gate-voltage.png', command=self.select_gate_voltage_window)
         self.shortcut_bar.add_btn(image_path='images/btn-waveform.png', command=self.setup_waveform_window)
