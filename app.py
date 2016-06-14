@@ -49,12 +49,21 @@ class CurveTracer(tk.Frame):
 
         # create the file menu
         self.file_menu = tk.Menu(self.menu_bar, tearoff=0)
-        self.file_menu.add_command(label='Test')
+        self.file_menu.add_command(label='Save Waveform As...', command=self.save_waveform)
+        self.file_menu.add_command(label='Load Waveform...', command=self.load_waveform)
+        self.file_menu.add_command(label='Clear Waveforms', command=self.clear_waveforms)
 
         self.edit_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.edit_menu.add_command(label='Select Serial Port...', command=self.select_port_window)
+        self.edit_menu.add_separator()
+        self.edit_menu.add_command(label='Run', command=self.run_plot)
+        self.edit_menu.add_command(label='Pause', command=self.pause_plot)
+        self.edit_menu.add_separator()
         self.edit_menu.add_command(label='Remove Offset...', command=self.remove_offset)
         self.edit_menu.add_command(label='Edit Waveform...', command=self.setup_waveform_window)
+        self.edit_menu.add_command(label='Gate Voltage...', command=self.select_gate_voltage_window)
+        self.edit_menu.add_separator()
+        self.edit_menu.add_command(label='Toggle Output Mode', command=self.select_output_mode)
 
         self.help_menu = tk.Menu(self.menu_bar, tearoff=0)
         self.help_menu.add_command(label='About', command=About)
