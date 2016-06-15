@@ -238,7 +238,11 @@ class CurveTracer(tk.Frame):
         port_selector_window = tk.Toplevel(padx=self.widget_padding, pady=self.widget_padding)
         port_selector_window.grab_set()
         port_selector_window.title('for(embed) - Serial Port Selector')
-        port_selector_window.iconbitmap('images/forembed.ico')
+        
+        try:
+            port_selector_window.iconbitmap('images/forembed.ico')
+        except:
+            pass
 
         txt = "Select a port from the list: "
         port_label = tk.Label(port_selector_window, text=txt)
@@ -298,8 +302,12 @@ class CurveTracer(tk.Frame):
         gate_voltage_selector_window = tk.Toplevel(padx=self.widget_padding, pady=self.widget_padding)
         gate_voltage_selector_window.grab_set()
         gate_voltage_selector_window.title('for(embed) - Gate Voltage Setting Window')
-        gate_voltage_selector_window.iconbitmap('images/forembed.ico')
-
+        
+        try:
+            gate_voltage_selector_window.iconbitmap('images/forembed.ico')
+        except:
+            pass
+            
         e = tk.Entry(gate_voltage_selector_window)
         e.pack(side=tk.LEFT)
 
@@ -404,7 +412,11 @@ class CurveTracer(tk.Frame):
         waveform_window = tk.Toplevel(padx=self.widget_padding, pady=self.widget_padding)
         waveform_window.grab_set()
         waveform_window.title('Waveform Setup')
-        waveform_window.iconbitmap('images/forembed.ico')
+        
+        try:
+            waveform_window.iconbitmap('images/forembed.ico')
+        except:
+            pass
 
         # create the widgets
         img = ImageTk.PhotoImage(Image.open("images/waveform.png"))
@@ -530,6 +542,11 @@ if __name__ == '__main__':
     root = tk.Tk()
     root.resizable(0, 0)
     root.title("for(embed) - Curve Tracer")
-    root.iconbitmap('images/forembed.ico')
+    
+    try:
+        root.iconbitmap('images/forembed.ico')
+    except:
+        pass
+        
     app = CurveTracer(root)
     root.mainloop()
