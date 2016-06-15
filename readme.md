@@ -5,10 +5,6 @@ Be sure to check out the [firmware](https://github.com/slightlynybbled/curve_tra
 
 # Running This Program #
 
-This is *un-tested* on linux, but there is nothing too exotic going on, so I
-expect there to be some issue somewhere, but I am not sure what that issue
-will be.
-
 ## With Python 3 Installed ##
 
 ### Linux ###
