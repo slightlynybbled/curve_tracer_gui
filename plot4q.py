@@ -16,7 +16,7 @@ class Plot4Q(tk.Canvas):
         self.grid = grid
 
         self.plot = tk.Canvas(self.parent, width=x_pixels, height=y_pixels, background=self.DEFAULT_BG_COLOR)
-        self.plot.pack()
+        self.plot.grid()
 
         self.draw_axes()
         self.draw_grid()
@@ -181,9 +181,6 @@ class Plot4Q(tk.Canvas):
 
         for item_tag in del_list:
             self.plot.delete(item_tag)
-
-    def get_scatter(self, tag='current'):
-        return self.current_points[tag]
 
     def to_screen_coords(self, x, y):
         new_x = x + self.width_px/2

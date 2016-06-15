@@ -79,13 +79,13 @@ class CurveTracer(tk.Frame):
         # ----------------------------
         # configure the high-level frames and add them to the root window
         self.shortcut_frame = tk.Frame(self.parent)
-        self.shortcut_frame.pack(fill=tk.X)
+        self.shortcut_frame.grid(row=0, column=0, sticky=tk.W+tk.N+tk.E+tk.S)
 
         self.plot_frame = tk.Frame(self.parent)
-        self.plot_frame.pack(fill=tk.X)
+        self.plot_frame.grid(row=1, column=0, sticky=tk.W+tk.N+tk.E+tk.S)
 
         self.status_frame = tk.Frame(self.parent)
-        self.status_frame.pack(fill=tk.X)
+        self.status_frame.grid(row=2, column=0, sticky=tk.W+tk.N+tk.E+tk.S)
 
         # ----------------------------
         # create the widgets within their frames
@@ -192,7 +192,7 @@ class CurveTracer(tk.Frame):
         self.parent.after(200, self.update_plots)
 
     def save_waveform(self):
-        points = self.plot.get_scatter(tag='live')
+        points = self.live_points
 
         if points:
             f = filedialog.asksaveasfile(mode='w', defaultextension='.csv', filetypes=[('comma-separated values', '.csv')])
