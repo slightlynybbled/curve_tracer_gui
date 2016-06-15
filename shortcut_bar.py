@@ -24,7 +24,7 @@ class ShortcutBar:
         else:
             self.buttons.append(tk.Button(self.parent, text=text, command=command, tag=tag))
 
-        self.buttons[-1].pack(side=tk.LEFT)
+        self.buttons[-1].grid(row=0, column=len(self.buttons)-1)
 
 if __name__ == '__main__':
     root = tk.Tk()
