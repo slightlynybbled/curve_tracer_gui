@@ -4,7 +4,7 @@ block_cipher = None
 
 image_files = [('../images/*.png', 'images'), ('../images/*.ico', 'images')]
 
-a = Analysis(['..\\app.py'],
+a = Analysis(['../app.py'],
              pathex=['C:\\code\\curve_tracer_gui\\build'],
              binaries=None,
              datas=image_files,
