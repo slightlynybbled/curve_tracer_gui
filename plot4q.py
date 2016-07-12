@@ -128,12 +128,12 @@ class Plot4Q(tk.Canvas):
 
         x_screen, y_screen = self.to_screen_coords(x, y)
 
-        point_width = 2
+        point_radius = 2
 
-        x0 = x_screen - point_width
-        y0 = y_screen - point_width
-        x1 = x_screen + point_width
-        y1 = y_screen + point_width
+        x0 = x_screen - point_radius
+        y0 = y_screen - point_radius
+        x1 = x_screen + point_radius
+        y1 = y_screen + point_radius
 
         # if the tag exists, then move the point, else create the point
         point_ids = self.plot.find_withtag(tag)
@@ -142,8 +142,8 @@ class Plot4Q(tk.Canvas):
             point_id = point_ids[0]
 
             location = self.plot.coords(point_id)
-            current_x = location[0]
-            current_y = location[1]
+            current_x = (location[0] + location[2])/2
+            current_y = (location[1] + location[3])/2
 
             move_x = x_screen - current_x
             move_y = y_screen - current_y
