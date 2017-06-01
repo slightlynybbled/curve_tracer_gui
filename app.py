@@ -45,6 +45,7 @@ class CurveTracer(tk.Frame):
 
     def __init__(self, parent):
         self.parent = parent
+        super().__init__(self.parent)
 
         # configure the menus
         self.menu_bar = tk.Menu(self.parent)
@@ -543,11 +544,11 @@ class CurveTracer(tk.Frame):
 if __name__ == '__main__':
     root = tk.Tk()
     root.resizable(0, 0)
-    root.title("for(embed) - Curve Tracer")
+    root.title("Curve Tracer - for(embed)")
     
     try:
         root.iconbitmap('images/forembed.ico')
-    except:
+    except FileNotFoundError:
         pass
         
     app = CurveTracer(root)
