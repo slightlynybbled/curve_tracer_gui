@@ -1,12 +1,13 @@
 import tkinter as tk
 
 
-class Plot4Q(tk.Canvas):
+class Plot4Q(tk.Frame):
     DEFAULT_BG_COLOR = 'grey'
     DEFAULT_LINE_COLOR = '#39FF14'
 
     def __init__(self, master, x_pixels=200, y_pixels=200, xrange=1.0, yrange=1.0, grid=False, x_axis_label_str=None, y_axis_label_str=None):
         self.parent = master
+        super().__init__(self.parent)
 
         self.width_px = x_pixels
         self.height_px = y_pixels
