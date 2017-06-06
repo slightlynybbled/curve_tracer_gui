@@ -12,10 +12,10 @@ import serial.tools.list_ports
 import serialdispatch
 from PIL import Image, ImageTk
 
-from shortcut_bar import ShortcutBar
-from plot4q import Plot4Q
-from status_bar import StatusBar
-from about import About
+from curve_tracer.shortcut_bar import ShortcutBar
+from curve_tracer.plot4q import Plot4Q
+from curve_tracer.status_bar import StatusBar
+from curve_tracer.about import About
 
 
 class CurveTracer(tk.Frame):
@@ -98,15 +98,15 @@ class CurveTracer(tk.Frame):
 
         # ----------------------------
         # add the shortcut bar buttons and commands
-        self.shortcut_bar.add_btn(image_path='images/btn-save.png', command=self.save_waveform)
-        self.shortcut_bar.add_btn(image_path='images/btn-load.png', command=self.load_waveform)
-        self.shortcut_bar.add_btn(image_path='images/btn-erase.png', command=self.clear_waveforms)
-        self.shortcut_bar.add_btn(image_path='images/connections.png', command=self.select_port_window)
-        self.shortcut_bar.add_btn(image_path='images/btn-pause.png', command=self.pause_plot)
-        self.shortcut_bar.add_btn(image_path='images/btn-run.png', command=self.run_plot)
-        self.shortcut_bar.add_btn(image_path='images/select-output.png', command=self.select_output_mode)
-        self.shortcut_bar.add_btn(image_path='images/gate-voltage.png', command=self.select_gate_voltage_window)
-        self.shortcut_bar.add_btn(image_path='images/btn-waveform.png', command=self.setup_waveform_window)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-save.png', command=self.save_waveform)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-load.png', command=self.load_waveform)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-erase.png', command=self.clear_waveforms)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/connections.png', command=self.select_port_window)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-pause.png', command=self.pause_plot)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-run.png', command=self.run_plot)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/select-output.png', command=self.select_output_mode)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/gate-voltage.png', command=self.select_gate_voltage_window)
+        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-waveform.png', command=self.setup_waveform_window)
 
         # ----------------------------
         # initialize the canvas interactive objects
