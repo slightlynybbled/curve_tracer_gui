@@ -3,7 +3,8 @@ import os
 
 # ---------------------------------
 # imports the version from the package
-here = os.path.dirname(os.path.dirname(__file__))
+here = os.path.abspath(os.path.dirname(__file__))
+print('here: ', here)
 exec(open(os.path.join(here, 'curve_tracer/version.py')).read())
 
 # ---------------------------------

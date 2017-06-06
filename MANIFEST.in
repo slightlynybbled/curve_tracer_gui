@@ -1,0 +1,2 @@
+include curve_tracer/images/*.png
+include curve_tracer/images/*.ico

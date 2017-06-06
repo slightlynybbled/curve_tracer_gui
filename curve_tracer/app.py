@@ -3,6 +3,7 @@
 import tkinter as tk
 from tkinter import filedialog
 import csv
+import os
 
 import threading
 import time
@@ -18,7 +19,7 @@ from curve_tracer.status_bar import StatusBar
 from curve_tracer.about import About
 
 
-class CurveTracer(tk.Frame):
+class CurveTracer:
     widget_padding = 5
 
     serial_baud_rate = 57600
@@ -43,9 +44,13 @@ class CurveTracer(tk.Frame):
     volts_per_bit = 5.0/32768
     milli_amps_per_bit = 25.0/16384
 
-    def __init__(self, parent):
-        self.parent = parent
-        super().__init__(self.parent)
+    def __init__(self):
+        self.parent = tk.Tk()
+
+        here = os.path.dirname(__file__)
+        self.parent.iconbitmap(os.path.join(here, 'images/forembed.ico'))
+        self.parent.resizable(0, 0)
+        self.parent.title("Curve Tracer - for(embed)")
 
         # configure the menus
         self.menu_bar = tk.Menu(self.parent)
@@ -98,15 +103,15 @@ class CurveTracer(tk.Frame):
 
         # ----------------------------
         # add the shortcut bar buttons and commands
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-save.png', command=self.save_waveform)
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-load.png', command=self.load_waveform)
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-erase.png', command=self.clear_waveforms)
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/connections.png', command=self.select_port_window)
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-pause.png', command=self.pause_plot)
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-run.png', command=self.run_plot)
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/select-output.png', command=self.select_output_mode)
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/gate-voltage.png', command=self.select_gate_voltage_window)
-        self.shortcut_bar.add_btn(image_path='curve_tracer/images/btn-waveform.png', command=self.setup_waveform_window)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-save.png'), command=self.save_waveform)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-load.png'), command=self.load_waveform)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-erase.png'), command=self.clear_waveforms)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/connections.png'), command=self.select_port_window)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-pause.png'), command=self.pause_plot)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-run.png'), command=self.run_plot)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/select-output.png'), command=self.select_output_mode)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/gate-voltage.png'), command=self.select_gate_voltage_window)
+        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-waveform.png'), command=self.setup_waveform_window)
 
         # ----------------------------
         # initialize the canvas interactive objects
@@ -122,6 +127,8 @@ class CurveTracer(tk.Frame):
         dispatch_monitor_thread = threading.Thread(target=self.monitor_dispatch, args=())
         dispatch_monitor_thread.daemon = True
         dispatch_monitor_thread.start()
+
+        self.parent.mainloop()
 
     def vi_subscriber(self):
         # create a list of points as (x, y) tuples in preparation for plotting
