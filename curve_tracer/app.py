@@ -47,12 +47,12 @@ class CurveTracer:
     def __init__(self):
         self.parent = tk.Tk()
 
-        here = os.path.dirname(__file__)
+        image_path = os.path.join(os.path.dirname(__file__), 'images')
 
         self.parent.resizable(0, 0)
         self.parent.title("Curve Tracer - for(embed)")
         #self.parent.wm_iconbitmap(os.path.join(here, 'images/forembed.ico'))
-        self.parent.iconphoto(True, tk.PhotoImage(file=os.path.join(here, 'images/forembed.png')))
+        self.parent.iconphoto(True, tk.PhotoImage(file=os.path.join(image_path, 'forembed.png')))
 
         # configure the menus
         self.menu_bar = tk.Menu(self.parent)
@@ -105,15 +105,15 @@ class CurveTracer:
 
         # ----------------------------
         # add the shortcut bar buttons and commands
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-save.png'), command=self.save_waveform)
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-load.png'), command=self.load_waveform)
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-erase.png'), command=self.clear_waveforms)
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/connections.png'), command=self.select_port_window)
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-pause.png'), command=self.pause_plot)
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-run.png'), command=self.run_plot)
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/select-output.png'), command=self.select_output_mode)
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/gate-voltage.png'), command=self.select_gate_voltage_window)
-        self.shortcut_bar.add_btn(image_path=os.path.join(here, 'images/btn-waveform.png'), command=self.setup_waveform_window)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'btn-save.png'), command=self.save_waveform)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'btn-load.png'), command=self.load_waveform)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'btn-erase.png'), command=self.clear_waveforms)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'connections.png'), command=self.select_port_window)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'btn-pause.png'), command=self.pause_plot)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'btn-run.png'), command=self.run_plot)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'select-output.png'), command=self.select_output_mode)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'gate-voltage.png'), command=self.select_gate_voltage_window)
+        self.shortcut_bar.add_btn(image_path=os.path.join(image_path, 'btn-waveform.png'), command=self.setup_waveform_window)
 
         # ----------------------------
         # initialize the canvas interactive objects
