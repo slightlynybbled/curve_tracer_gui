@@ -48,9 +48,11 @@ class CurveTracer:
         self.parent = tk.Tk()
 
         here = os.path.dirname(__file__)
-        self.parent.iconbitmap(os.path.join(here, 'images/forembed.ico'))
+
         self.parent.resizable(0, 0)
         self.parent.title("Curve Tracer - for(embed)")
+        #self.parent.wm_iconbitmap(os.path.join(here, 'images/forembed.ico'))
+        self.parent.iconphoto(True, tk.PhotoImage(file=os.path.join(here, 'images/forembed.png')))
 
         # configure the menus
         self.menu_bar = tk.Menu(self.parent)
