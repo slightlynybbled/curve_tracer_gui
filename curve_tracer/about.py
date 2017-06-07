@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 import webbrowser
 from PIL import Image, ImageTk
 
@@ -9,7 +10,9 @@ class About:
     def __init__(self):
         window = tk.Toplevel(padx=5, pady=5)
         window.title('for(embed) - About')
-        window.iconbitmap('images/forembed.ico')
+
+        image_path = os.path.join(os.path.dirname(__file__), 'images')
+        window.iconphoto(True, tk.PhotoImage(file=os.path.join(image_path, 'forembed.png')))
 
         ct_label = tk.Label(window,
                             text='Curve Tracer',

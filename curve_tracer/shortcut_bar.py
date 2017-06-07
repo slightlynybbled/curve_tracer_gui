@@ -3,8 +3,8 @@ from PIL import Image, ImageTk
 
 
 class ShortcutBar:
-    HEIGHT = 50
-    WIDTH = 50
+    HEIGHT = 30
+    WIDTH = 30
 
     def __init__(self, parent):
         self.parent = parent
